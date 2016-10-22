@@ -8,7 +8,7 @@ public class Projeto implements InterfaceProjeto {
 	private int prioridade;
 	private Date criacao, termino, meta;
 	private List<InterfaceProjeto> projetos;
-	
+
 	public Projeto(String titulo, String descricao, int prioridade, Date meta) {
 		this.titulo = titulo;
 		this.descricao = descricao;
@@ -18,26 +18,20 @@ public class Projeto implements InterfaceProjeto {
 		this.meta = meta;
 		projetos = new ArrayList<InterfaceProjeto>();
 	}
-	
+
 	public void add(InterfaceProjeto projeto) {
 		projetos.add(projeto);
 	}
-	
+
 	public void remove(InterfaceProjeto projeto) {
-		boolean removido = false;
-		for(InterfaceProjeto p : projetos) {
-			if(projeto.equals(p)) {
-				projetos.remove(p);
-				removido = true;
-			}
-		}
-		if(removido) {
-			System.out.println("Removido com sucesso.");
+		if(projetos.contains(projeto)) {
+			projetos.remove(projeto);
+			System.out.println("Projeto excluido com sucesso.");
 		} else {
-			System.out.println("Projeto não encontrado.");
+			System.out.println("Este projeto não existe.");
 		}
 	}
-	
+
 	public double avaliarPorcentagem() {
 		int completado = 0;
 		for(InterfaceProjeto p : projetos) {
@@ -46,10 +40,10 @@ public class Projeto implements InterfaceProjeto {
 		return completado/projetos.size();
 	}
 
-	public void completarTudo() {
+	public void completar() {
 		for(InterfaceProjeto p : projetos) {
-			p.completarTudo();
+			p.completar();
 		}
 	}
-
+	
 }

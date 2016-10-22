@@ -1,13 +1,13 @@
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Lista implements InterfaceProjeto {
 
 	private String titulo, descricao;
 	private int prioridade;
 	private Date criacao, termino, meta;
-	private Map<String,Boolean> tarefas;
+	private List<InterfaceProjeto> tarefas;
 
 	public Lista(String titulo, String descricao, int prioridade, Date meta) {
 		this.titulo = titulo;
@@ -16,37 +16,34 @@ public class Lista implements InterfaceProjeto {
 		criacao = new Date();
 		termino = new Date();
 		this.meta = meta;
-		tarefas = new HashMap<String, Boolean>();
+		tarefas = new ArrayList<InterfaceProjeto>();
 	}
 
 	public void add(String tarefa) {
-		tarefas.put(tarefa, false);
+		tarefas.add(new Tarefa(tarefa));
 	}
 
-	public void remove(String tarefa) {
-		if(tarefas.containsKey(tarefa)) {
+	public void remove(InterfaceProjeto tarefa) {
+		if(tarefas.contains(tarefa)) {
 			tarefas.remove(tarefa);
+			System.out.println("Tarefa excluida com sucesso.");
+		} else {
+			System.out.println("Tarefa não encontrada.");
 		}
 	}
 
 	public double avaliarPorcentagem() {
-		double porcento = 0;
-		for (String key : tarefas.keySet()) {
-			if(tarefas.get(key)) {
-				porcento++;
-			}
+		double completado = 0;
+		for(InterfaceProjeto t : tarefas) {
+			completado += t.avaliarPorcentagem();
 		}
-		return (porcento/tarefas.size())*100;
+		return (completado/tarefas.size())*100;
 	}
 
-	public void completarTudo() {
-		for (String key : tarefas.keySet()) {
-			completar(key);
+	public void completar() {
+		for(InterfaceProjeto t : tarefas) {
+			t.completar();
 		}
-	}
-
-	public void completar(String tarefa) {
-		tarefas.put(tarefa, true);
 	}
 
 }

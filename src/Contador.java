@@ -20,7 +20,7 @@ public class Contador {
 	public void modificarTotal(int total) {
 		this.total = total;
 	}
-	
+
 	public void contar(int contado) {
 		this.contado = contado;
 	}
@@ -29,7 +29,7 @@ public class Contador {
 		return (contado/total)*100;
 	}
 
-	public void completarTudo() {
+	public void completar() {
 		contado = total;
 	}
 
