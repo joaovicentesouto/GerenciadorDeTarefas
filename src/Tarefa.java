@@ -2,10 +2,12 @@
 public class Tarefa implements InterfaceProjeto {
 	
 	private String descricao;
+	private int prioridade;
 	boolean status;
 	
-	public Tarefa(String descricao) {
+	public Tarefa(String descricao, int prioridade) {
 		this.descricao = descricao;
+		this.prioridade = prioridade;
 		status = false;
 	}
 	

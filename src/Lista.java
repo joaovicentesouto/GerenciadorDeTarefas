@@ -19,8 +19,8 @@ public class Lista implements InterfaceProjeto {
 		tarefas = new ArrayList<InterfaceProjeto>();
 	}
 
-	public void add(String tarefa) {
-		tarefas.add(new Tarefa(tarefa));
+	public void add(String tarefa, int prioridade) {
+		tarefas.add(new Tarefa(tarefa, prioridade));
 	}
 
 	public void remove(InterfaceProjeto tarefa) {

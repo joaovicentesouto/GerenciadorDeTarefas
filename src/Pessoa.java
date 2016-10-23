@@ -17,5 +17,13 @@ public class Pessoa {
 	public void completar(InterfaceProjeto projeto) {
 		projeto.completar();
 	}
+	
+	public boolean logIn(String senha) {
+		if(this.senha.equals(senha)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 }
