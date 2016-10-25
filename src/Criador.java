@@ -4,17 +4,18 @@ import java.awt.event.*;
 public class Criador implements ActionListener {
 
 	JButton b;
-	InterfaceProjeto topo;
+	InterfaceAdd topo;
 	
-	public Criador(JButton b, InterfaceProjeto topo) {
+	public Criador(JButton b, InterfaceAdd topo) {
 		this.b = b;
 		this.topo = topo;
 	}
 	
-	@Override
 	public void actionPerformed(ActionEvent e) {
-		// mesmo para este, criar outra interface pra ter metodo add?
-		//topo.add(new InterfaceProjeto()????);
+		//Controle controle = new Controle();
+		//InterfaceProjeto = controle.recebeComponenete(); --> Tem que chamar o controle que vai criar os componentes e passar para add.
+		InterfaceProjeto p = new Projeto(null, null, 0, null);
+		topo.add(p);
 	}
 
 }

@@ -2,7 +2,7 @@ import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pessoa {
+public class Pessoa implements InterfaceAdd, InterfaceRemove {
 	
 	private String nome, usuario, senha;
 	private List<InterfaceProjeto> projetos;
@@ -24,6 +24,14 @@ public class Pessoa {
 		} else {
 			return false;
 		}
+	}
+
+	public void add(InterfaceProjeto p) {
+		projetos.add(p);
+	}
+	
+	public void remove(InterfaceProjeto p) {
+		projetos.remove(p);
 	}
 
 }

@@ -2,7 +2,7 @@ import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Projeto implements InterfaceProjeto {
+public class Projeto implements InterfaceProjeto, InterfaceAdd, InterfaceRemove {
 
 	private String titulo, descricao;
 	private int prioridade;
