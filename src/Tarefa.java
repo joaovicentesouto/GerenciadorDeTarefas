@@ -1,13 +1,12 @@
+import java.util.Date;
 
 public class Tarefa implements InterfaceProjeto {
 	
-	private String descricao;
-	private int prioridade;
+	private Dados dados;
 	boolean status;
 	
-	public Tarefa(String descricao, int prioridade) {
-		this.descricao = descricao;
-		this.prioridade = prioridade;
+	public Tarefa(String titulo, String descricao, int prioridade, Date meta) {
+		dados = new Dados(titulo, descricao, prioridade, meta);
 		status = false;
 	}
 	

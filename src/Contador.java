@@ -2,19 +2,13 @@ import java.util.Date;
 
 public class Contador {
 
-	private String titulo, descricao;
-	private int prioridade, total, contado;
-	private Date criacao, termino, meta;
+	private Dados dados;
+	private int total, contado;
 
 	public Contador(String titulo, String descricao, int prioridade, int total, int contado, Date meta) {
-		this.titulo = titulo;
-		this.descricao = descricao;
-		this.prioridade = prioridade;
+		dados = new Dados(titulo, descricao, prioridade, meta);
 		this.total = total;
 		this.contado = contado;
-		criacao = new Date();
-		termino = new Date();
-		this.meta = meta;
 	}
 
 	public void modificarTotal(int total) {

@@ -4,18 +4,11 @@ import java.util.List;
 
 public class Projeto implements InterfaceProjeto, InterfaceAdd, InterfaceRemove {
 
-	private String titulo, descricao;
-	private int prioridade;
-	private Date criacao, termino, meta;
+	private Dados dados;
 	private List<InterfaceProjeto> projetos;
 
 	public Projeto(String titulo, String descricao, int prioridade, Date meta) {
-		this.titulo = titulo;
-		this.descricao = descricao;
-		this.prioridade = prioridade;
-		criacao = new Date();
-		termino = new Date();
-		this.meta = meta;
+		dados = new Dados(titulo, descricao, prioridade, meta);
 		projetos = new ArrayList<InterfaceProjeto>();
 	}
 

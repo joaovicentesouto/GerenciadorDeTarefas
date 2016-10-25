@@ -3,19 +3,16 @@ import java.util.Timer; //????
 
 public class Conta implements InterfaceProjeto {
 
-	private String titulo, descricao;
-	private int prioridade, jurosAoMes;;
-	private Date criacao, termino, vencimento;
+	private Dados dados;
+	private int juros;
 	private int quantParcelas, valorParcela, parcelasPagas;
 	
-	public Conta(int quantParcelas, int valorParcela, Date vencimento, int jurosAoMes){
+	public Conta(String titulo, String descricao, int prioridade, Date meta, int quantParcelas, int valorParcela, Date vencimento, int juros){
+		dados = new Dados(titulo, descricao, prioridade, meta);
 		this.quantParcelas = quantParcelas;
 		this.valorParcela = valorParcela;
-		criacao = new Date();
-		termino = new Date();
-		this.vencimento = vencimento;
 		parcelasPagas = 0;
-		this.jurosAoMes = jurosAoMes;
+		this.juros = juros;
 	}
 	
 	public double avaliarPorcentagem(){

@@ -4,26 +4,19 @@ import java.util.ArrayList;
 
 public class Lista implements InterfaceProjeto, InterfaceAdd, InterfaceRemove {
 
-	private String titulo, descricao;
-	private int prioridade;
-	private Date criacao, termino, meta;
+	private Dados dados;
 	private List<InterfaceProjeto> tarefas;
 
 	public Lista(String titulo, String descricao, int prioridade, Date meta) {
-		this.titulo = titulo;
-		this.descricao = descricao;
-		this.prioridade = prioridade;
-		criacao = new Date();
-		termino = new Date();
-		this.meta = meta;
+		dados = new Dados(titulo, descricao, prioridade, meta);
 		tarefas = new ArrayList<InterfaceProjeto>();
 	}
 
-	public void add(String tarefa, int prioridade) {
-		tarefas.add(new Tarefa(tarefa, prioridade));
+	/*public void add(String titulo, String descricao, int prioridade, Date meta) {
+		tarefas.add(new Tarefa(String titulo, String descricao, int prioridade, Date meta));
 	}
+	ou  */
 	
-	// ou
 	public void add(InterfaceProjeto tarefa) {
 		tarefas.add(tarefa);
 	}
