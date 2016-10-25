@@ -22,6 +22,11 @@ public class Lista implements InterfaceProjeto {
 	public void add(String tarefa, int prioridade) {
 		tarefas.add(new Tarefa(tarefa, prioridade));
 	}
+	
+	// ou
+	public void add(InterfaceProjeto tarefa) {
+		tarefas.add(tarefa);
+	}
 
 	public void remove(InterfaceProjeto tarefa) {
 		if(tarefas.contains(tarefa)) {
