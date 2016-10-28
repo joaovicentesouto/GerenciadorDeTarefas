@@ -22,8 +22,6 @@ public class GestorTamanhoTela implements ComponentListener {
 			break;
 		default : break;
 		}
-		
-		
 	}
 
 	@Override
@@ -32,10 +30,16 @@ public class GestorTamanhoTela implements ComponentListener {
 
 	}
 
-	@Override
 	public void componentShown(ComponentEvent e) {
-		// TODO Auto-generated method stub
-		
+		switch (config.ajuste()) {
+		case "LOGIN" : 
+			construtor.ajusteTamanhoLogin();
+			break;
+		case "HOME" : 
+			//construtor.ajusteTamanhoHome();
+			break;
+		default : break;
+		}
 	}
 
 	@Override
