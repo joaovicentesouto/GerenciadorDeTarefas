@@ -17,7 +17,7 @@ public class Main {
 		
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setSize(400, 500);
-		f.pack();
+		//f.pack();
 		f.setVisible(true);
 
 	}
