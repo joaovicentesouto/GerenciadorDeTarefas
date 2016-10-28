@@ -18,7 +18,7 @@ public class GestorTamanhoTela implements ComponentListener {
 			construtor.ajusteTamanhoLogin();
 			break;
 		case "HOME" : 
-			//construtor.ajusteTamanhoHome();
+			construtor.ajusteTamanhoHome();
 			break;
 		default : break;
 		}
@@ -36,7 +36,7 @@ public class GestorTamanhoTela implements ComponentListener {
 			construtor.ajusteTamanhoLogin();
 			break;
 		case "HOME" : 
-			//construtor.ajusteTamanhoHome();
+			construtor.ajusteTamanhoHome();
 			break;
 		default : break;
 		}

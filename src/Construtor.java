@@ -17,10 +17,10 @@ public class Construtor {
 
 	public void telaLogin() {
 
-		tela.removeAll();
-		
+		tela.removeAll();		
 		tela.setLayout(new BorderLayout());
-
+		
+		//-- NORTH
 		JPanel log = new JPanel();
 		log.setBackground(Color.blue);
 		tela.add(log, BorderLayout.NORTH);
@@ -29,8 +29,10 @@ public class Construtor {
 		Dimension frame = f.getSize();
 		min.height = frame.height/2-100;
 		log.setPreferredSize(min);*/
+		
+		//-- Fim NORTH
 
-		//--- Centro Login
+		//--- CENTER Login
 		log = new JPanel();
 		log.setLayout(new GridLayout(3,1));
 
@@ -58,8 +60,9 @@ public class Construtor {
 		log.add(aux);
 		
 		tela.add(log, BorderLayout.CENTER);
-		//---
+		//--- Fim CENTER
 		
+		//-- SOUTH
 		log = new JPanel();
 		log.setBackground(Color.cyan);
 		tela.add(log, BorderLayout.SOUTH);
@@ -68,6 +71,8 @@ public class Construtor {
 		frame = f.getSize();
 		min.height = frame.height/2-100;
 		log.setPreferredSize(min);*/
+		
+		//-- Fim SOUTH
 		
 		tela.repaint();
 	}
@@ -92,8 +97,11 @@ public class Construtor {
 
 		tela.removeAll();
 		tela.setLayout(new BorderLayout());
-
+		
+		//-- WEST
 		menuLateral();
+		
+		//-- CENTER
 		home();
 		
 		tela.repaint();
@@ -166,19 +174,37 @@ public class Construtor {
 		aux.add(b);
 		
 		aux.setBackground(Color.LIGHT_GRAY);
-		home.add(aux, BorderLayout.CENTER);
+		home.add(aux, BorderLayout.SOUTH);
+		
+		t = aux.getPreferredSize();
+		t.height = f.getHeight()-75;
+		aux.setPreferredSize(t);
 		//--
 
-		
-
-		aux = new JPanel();
+		/*aux = new JPanel();
 		b = new JButton("Volta log in");
 		b.addActionListener(new GestorMudaTela(config));
 		b.setActionCommand("LOGIN");
 		aux.add(b);
-		home.add(aux, BorderLayout.SOUTH);
+		home.add(aux, BorderLayout.SOUTH);*/
 
 		tela.add(home, BorderLayout.CENTER);
+	}
+	
+	public void ajusteTamanhoHome() {
+		BorderLayout layout = (BorderLayout) tela.getLayout();
+		
+		JPanel aux = (JPanel) layout.getLayoutComponent(BorderLayout.CENTER);
+		
+		BorderLayout lay = (BorderLayout) aux.getLayout();
+		
+		JPanel aux2 = (JPanel) lay.getLayoutComponent(BorderLayout.SOUTH);
+		
+		Dimension min = aux2.getPreferredSize();
+		min.height = f.getHeight()-75;
+		aux2.setPreferredSize(min);
+		
+		tela.repaint();
 	}
 
 }
