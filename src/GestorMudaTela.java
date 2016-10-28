@@ -1,10 +1,11 @@
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class GestorLogin implements ActionListener {
+public class GestorMudaTela implements ActionListener {
 
 	private Configuracao config;
 	
-	public GestorLogin(Configuracao config) {
+	public GestorMudaTela(Configuracao config) {
 		this.config = config;
 	}
 	

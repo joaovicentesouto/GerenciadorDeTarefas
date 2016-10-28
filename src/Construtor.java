@@ -52,7 +52,7 @@ public class Construtor {
 		JButton b = new JButton("Cadastrar");
 		aux.add(b);
 		b = new JButton("Log In");
-		b.addActionListener(new GestorLogin(config));
+		b.addActionListener(new GestorMudaTela(config));
 		b.setActionCommand("HOME");
 		aux.add(b);
 		log.add(aux);
@@ -137,7 +137,7 @@ public class Construtor {
 		aux.add(msg, BorderLayout.WEST);
 		
 		JButton b = new JButton("Volta log in");
-		b.addActionListener(new GestorLogin(config));
+		b.addActionListener(new GestorMudaTela(config));
 		b.setActionCommand("LOGIN");
 		t = b.getPreferredSize();
 		t.width = 100;
@@ -173,7 +173,7 @@ public class Construtor {
 
 		aux = new JPanel();
 		b = new JButton("Volta log in");
-		b.addActionListener(new GestorLogin(config));
+		b.addActionListener(new GestorMudaTela(config));
 		b.setActionCommand("LOGIN");
 		aux.add(b);
 		home.add(aux, BorderLayout.SOUTH);
