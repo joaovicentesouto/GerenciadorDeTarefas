@@ -6,8 +6,10 @@ public class Configuracao {
 	private String state;
 	private Construtor construtor;
 	private boolean inicio;
+	private JPanel tela;
 	
 	public Configuracao(JFrame f, JPanel tela) {
+		this.tela = tela;
 		construtor = new Construtor(f, tela, this);
 		state = "LOGIN";
 		inicio = true;
@@ -24,25 +26,22 @@ public class Configuracao {
 	}
 	
 	public void configTela() {
-		if(inicio) {
-			// constroi todas as telas e coloca como cards na tela
-			// e ja show(cards, "login");
-		} else {
-			fsm(); // muda os cards.
-		}
+		construtor.inicio();
+		CardLayout cl = (CardLayout) tela.getLayout();
+		cl.show(tela, "LOGIN");
 	}
 	
 	public void fsm() {
+		CardLayout cl = (CardLayout) tela.getLayout();
+		
 		switch (state) {
 		
 		case "LOGIN" :
-			// show(cards, "login")
-			//construtor.telaLogin();
+			cl.show(tela, "LOGIN");
 			break;
 		
 		case "HOME" : 
-			// show(cards, "home")
-			//construtor.telaHome();
+			cl.show(tela, "HOME");
 			break;
 		
 		default : break;

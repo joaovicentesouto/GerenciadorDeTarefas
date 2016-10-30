@@ -13,7 +13,7 @@ public class GestorMudaTela implements ActionListener {
 		String cmd;
 		cmd = e.getActionCommand();
 		config.nextState(cmd);
-		config.configTela();
+		config.fsm();;
 	}
 
 }

@@ -14,22 +14,22 @@ public class Construtor {
 		
 		f.addComponentListener(new GestorTamanhoTela(this, config));
 	}
+	
+	public void inicio() {
+		tela.setLayout(new CardLayout());
+		
+		tela.add(telaLogin(), "LOGIN");
+		tela.add(telaHome(), "HOME");
+	}
 
-	public void telaLogin() {
-
-		tela.removeAll();		
-		tela.setLayout(new BorderLayout());
+	public JPanel telaLogin() {
+		
+		JPanel principal = new JPanel(new BorderLayout());
 		
 		//-- NORTH
 		JPanel log = new JPanel();
 		log.setBackground(Color.blue);
-		tela.add(log, BorderLayout.NORTH);
-		
-		/*Dimension min = log.getPreferredSize();
-		Dimension frame = f.getSize();
-		min.height = frame.height/2-100;
-		log.setPreferredSize(min);*/
-		
+		principal.add(log, BorderLayout.NORTH);
 		//-- Fim NORTH
 
 		//--- CENTER Login
@@ -59,22 +59,16 @@ public class Construtor {
 		aux.add(b);
 		log.add(aux);
 		
-		tela.add(log, BorderLayout.CENTER);
+		principal.add(log, BorderLayout.CENTER);
 		//--- Fim CENTER
 		
 		//-- SOUTH
 		log = new JPanel();
 		log.setBackground(Color.cyan);
-		tela.add(log, BorderLayout.SOUTH);
-		
-		/*min = log.getPreferredSize();
-		frame = f.getSize();
-		min.height = frame.height/2-100;
-		log.setPreferredSize(min);*/
-		
+		principal.add(log, BorderLayout.SOUTH);
 		//-- Fim SOUTH
 		
-		tela.repaint();
+		return principal;
 	}
 	
 	public void ajusteTamanhoLogin() {
@@ -93,22 +87,23 @@ public class Construtor {
 		tela.repaint();
 	}
 
-	public void telaHome() {
+	public JPanel telaHome() {
 
-		tela.removeAll();
-		tela.setLayout(new BorderLayout());
+		JPanel principal = new JPanel(new BorderLayout());
 		
 		//-- WEST
-		menuLateral();
+		JPanel aux = menuLateral();
+		principal.add(aux, BorderLayout.WEST);
 		
 		//-- CENTER
-		home();
+		aux = home();
+		principal.add(aux, BorderLayout.CENTER);
 		
-		tela.repaint();
+		return principal;
 
 	}
 
-	private void menuLateral() {
+	private JPanel menuLateral() {
 		JPanel menu = new JPanel();
 		menu.setLayout(new GridLayout(5,1));
 
@@ -127,10 +122,10 @@ public class Construtor {
 		min.width = 250;
 		menu.setPreferredSize(min);
 
-		tela.add(menu, BorderLayout.WEST);
+		return menu;
 	}
 
-	private void home() {
+	private JPanel home() {
 		JPanel home = new JPanel();
 		home.setLayout(new BorderLayout());
 
@@ -179,16 +174,9 @@ public class Construtor {
 		t = aux.getPreferredSize();
 		t.height = f.getHeight()-75;
 		aux.setPreferredSize(t);
-		//--
-
-		/*aux = new JPanel();
-		b = new JButton("Volta log in");
-		b.addActionListener(new GestorMudaTela(config));
-		b.setActionCommand("LOGIN");
-		aux.add(b);
-		home.add(aux, BorderLayout.SOUTH);*/
-
-		tela.add(home, BorderLayout.CENTER);
+		//-- Fim Centro
+		
+		return home;
 	}
 	
 	public void ajusteTamanhoHome() {
