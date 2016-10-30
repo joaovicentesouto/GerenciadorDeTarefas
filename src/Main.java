@@ -11,9 +11,9 @@ public class Main {
 		f.setContentPane(tela);
 		config.configTela();
 		
-		/*JMenuBar menu = new JMenuBar();
+		JMenuBar menu = new JMenuBar();
 	    f.setJMenuBar(menu);
-	    config.configGuia(menu);*/
+	    config.configGuia(menu);
 		
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setSize(400,500);

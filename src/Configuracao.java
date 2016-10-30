@@ -20,7 +20,7 @@ public class Configuracao {
 	    guia = new JMenu("Arquivo");
 	    JMenuItem item;
 	    item = new JMenuItem("sair");
-	    //item.addActionListener(new GestorGuia());
+	    item.addActionListener(new GestorGuia());
 	    guia.add(item);
 	    menu.add(guia);
 	}
@@ -52,7 +52,7 @@ public class Configuracao {
 		state = nextState;
 	}
 	
-	public String ajuste() {
+	public String state() {
 		return state;
 	}
 

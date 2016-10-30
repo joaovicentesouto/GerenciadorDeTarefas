@@ -13,7 +13,7 @@ public class GestorTamanhoTela implements ComponentListener {
 	}
 
 	public void componentResized(ComponentEvent e) {
-		switch (config.ajuste()) {
+		switch (config.state()) {
 		case "LOGIN" : 
 			construtor.ajusteTamanhoLogin();
 			break;
@@ -31,9 +31,9 @@ public class GestorTamanhoTela implements ComponentListener {
 	}
 
 	public void componentShown(ComponentEvent e) {
-		switch (config.ajuste()) {
+		switch (config.state()) {
 		case "LOGIN" : 
-			construtor.ajusteTamanhoLogin();
+			//construtor.ajusteTamanhoLogin();
 			break;
 		case "HOME" : 
 			//construtor.ajusteTamanhoHome();
