@@ -4,11 +4,13 @@ import java.awt.*;
 public class Configuracao {
 	
 	private String state;
-	private Construtor construtor; 
+	private Construtor construtor;
+	private boolean inicio;
 	
 	public Configuracao(JFrame f, JPanel tela) {
 		construtor = new Construtor(f, tela, this);
 		state = "LOGIN";
+		inicio = true;
 	}
 	
 	public void configGuia(JMenuBar menu) {
@@ -22,14 +24,25 @@ public class Configuracao {
 	}
 	
 	public void configTela() {
+		if(inicio) {
+			// constroi todas as telas e coloca como cards na tela
+			// e ja show(cards, "login");
+		} else {
+			fsm(); // muda os cards.
+		}
+	}
+	
+	public void fsm() {
 		switch (state) {
 		
 		case "LOGIN" :
-			construtor.telaLogin();
+			// show(cards, "login")
+			//construtor.telaLogin();
 			break;
 		
 		case "HOME" : 
-			construtor.telaHome();
+			// show(cards, "home")
+			//construtor.telaHome();
 			break;
 		
 		default : break;
