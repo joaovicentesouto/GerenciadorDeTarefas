@@ -30,6 +30,10 @@ public class Construtor {
 		JPanel log = new JPanel();
 		log.setBackground(Color.blue);
 		principal.add(log, BorderLayout.NORTH);
+
+		Dimension min = log.getPreferredSize();
+		min.height = (500/2)-75;
+		log.setPreferredSize(min);
 		//-- Fim NORTH
 
 		//--- CENTER Login
@@ -66,30 +70,39 @@ public class Construtor {
 		log = new JPanel();
 		log.setBackground(Color.cyan);
 		principal.add(log, BorderLayout.SOUTH);
-		//-- Fim SOUTH
 		
+		min = log.getPreferredSize();
+		min.height = (500/2)-75;
+		log.setPreferredSize(min);
+		//-- Fim SOUTH
+
 		principal.setName("LOGIN");
 		
 		return principal;
 	}
 	
 	public void ajusteTamanhoLogin() {
-		/*CardLayout cards = (CardLayout) tela.getLayout();
-		??JPanel aux = (JPanel) tela.get;
-		??BorderLayout layout = (BorderLayout) aux.getLayout();
 		
-		JPanel aux2 = (JPanel) layout.getLayoutComponent(BorderLayout.NORTH);
-		//Container aux = cards.;
-		Dimension min = aux2.getPreferredSize();
+		JPanel card = null;
+		for (Component comp : tela.getComponents()) {
+		    if (comp.getName().equals("LOGIN")) {
+		        card = (JPanel) comp;
+		    }
+		}
+		
+		BorderLayout layout = (BorderLayout) card.getLayout();
+		
+		JPanel aux = (JPanel) layout.getLayoutComponent(BorderLayout.NORTH);
+		Dimension min = aux.getPreferredSize();
 		min.height = (f.getHeight()/2)-75;
-		aux2.setPreferredSize(min);
+		aux.setPreferredSize(min);
 		
-		aux2 = (JPanel) layout.getLayoutComponent(BorderLayout.SOUTH);
-		min = aux2.getPreferredSize();
+		aux = (JPanel) layout.getLayoutComponent(BorderLayout.SOUTH);
+		min = aux.getPreferredSize();
 		min.height = (f.getHeight()/2)-75;
-		aux2.setPreferredSize(min);
+		aux.setPreferredSize(min);
 		
-		tela.repaint();*/
+		tela.repaint();
 	}
 
 	private JPanel telaHome() {

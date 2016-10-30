@@ -16,7 +16,7 @@ public class Main {
 	    config.configGuia(menu);*/
 		
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setSize(400, 500);
+		f.setSize(400,500);
 		//f.pack();
 		f.setVisible(true);
 
