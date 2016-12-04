@@ -21,6 +21,7 @@ public class Main {
 		Dimension tamanho = kit.getScreenSize();
 		
 		f.setSize(tamanho.width, tamanho.height);
+		f.setMinimumSize(new Dimension(500, 200));
 		f.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setVisible(true);

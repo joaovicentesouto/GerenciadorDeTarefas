@@ -236,7 +236,7 @@ public class JNovoProjeto extends JDialog{
 		return aux;
 	}
 
-	public void criacao(LBotoesNovoProjeto act) throws ParseException { // Usado para criar
+	public void criacao(LBotoesNovoProjeto act) { // Usado para criar
 		String titulo, descricao, dia, mes, ano, conta;
 		int prioridade = 0, d, m, a, total = 0;
 		

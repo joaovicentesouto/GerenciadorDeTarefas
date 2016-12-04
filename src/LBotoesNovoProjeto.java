@@ -17,12 +17,7 @@ public class LBotoesNovoProjeto implements ActionListener{
 
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("ADICIONAR")) {
-			try {
 				janela.criacao(this);
-			} catch (ParseException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
 		} else {
 			if(e.getActionCommand().equals("CANCELAR"))
 				janela.dispose();

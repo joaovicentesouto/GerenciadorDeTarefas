@@ -43,6 +43,8 @@ public class JContador extends JPanel{
 		aux.add(bar, BorderLayout.EAST);
 		super.add(aux);
 		
+		contador.aceitarVisita(new VCorJPanel(aux));
+		
 		aux = new JPanel(new BorderLayout());
 		aux.add(descricao, BorderLayout.WEST);
 		JPanel aux2 = new JPanel(new FlowLayout());
@@ -50,6 +52,11 @@ public class JContador extends JPanel{
 		aux2.add(completar);
 		aux.add(aux2, BorderLayout.EAST);
 		super.add(aux);
+		
+		contador.aceitarVisita(new VCorJPanel(aux));
+		contador.aceitarVisita(new VCorJPanel(aux2));
+		
+		contador.aceitarVisita(new VCorJPanel(this));
 	}
 	
 	public void atualizar() {

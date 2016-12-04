@@ -43,6 +43,8 @@ public class JProjeto extends JPanel {
 		aux.add(bar, BorderLayout.EAST);
 		super.add(aux);
 		
+		projeto.aceitarVisita(new VCorJPanel(aux));
+		
 		aux = new JPanel(new BorderLayout());
 		aux.add(descricao, BorderLayout.WEST);
 		JPanel aux2 = new JPanel(new FlowLayout());
@@ -50,6 +52,11 @@ public class JProjeto extends JPanel {
 		aux2.add(completar);
 		aux.add(aux2, BorderLayout.EAST);
 		super.add(aux);
+		
+		projeto.aceitarVisita(new VCorJPanel(aux));
+		projeto.aceitarVisita(new VCorJPanel(aux2));
+		
+		projeto.aceitarVisita(new VCorJPanel(this));
 	}
 	
 	public void atualizar() {

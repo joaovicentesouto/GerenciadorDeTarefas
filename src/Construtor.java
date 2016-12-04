@@ -20,11 +20,13 @@ public class Construtor {
 	public void inicio() {
 		// TESTE -- criando usuario e projetos para testar a tree
 		Usuario us = new Usuario("Bruno", "123");
-		Projeto p = new Projeto("Projeto 1", "Descricao 1", 0, null);
+		Projeto p = new Projeto("Projeto 1", "Descricao 1", 2, null);
 		p.add(new Projeto("Projeto Dentro 1", "Desc dentro 1", 0, null));
 		us.add(p);
-		us.add(new Projeto("Projeto 2", "Desc 2", 0, null));
-		us.add(new Projeto("Projeto 3", "Descr 3", 0, null));
+		us.add(new Projeto("Projeto 2", "Desc 2", 1, null));
+		us.add(new Projeto("Projeto 3", "Descr 3", 2, null));
+		us.add(new Projeto("Projeto 4", "Desc 2", 0, null));
+		us.add(new Projeto("Projeto 5", "Descr 3", 1, null));
 		tela.setLayout(new CardLayout());
 		telaLogin();
 		telaCadastro();

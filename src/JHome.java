@@ -14,7 +14,9 @@ import java.awt.event.ComponentEvent;
 public class JHome extends JPanel {
 
 	private Usuario usuarioAtual;
-	ActionListener listener;
+	private JPrincipal principal;
+	private JTreeUsuario tree;
+	private ActionListener listener;
 	
 	public JHome(ActionListener listener, Usuario usuarioAtual) {
 		this.usuarioAtual = usuarioAtual;
@@ -22,6 +24,8 @@ public class JHome extends JPanel {
 	}
 	
 	public void criacao() {
+
+		//listener = new L
 		
 		setForeground(Color.BLACK);
 		setLayout(new BorderLayout());
@@ -63,17 +67,44 @@ public class JHome extends JPanel {
 		menu.setName("MENU_LATERAL");
 		painel.add(menu);
 		
-		JTree tree = new JTreeUsuario(usuarioAtual);
+		tree = new JTreeUsuario(usuarioAtual);
 		menu.setViewportView(tree);
+		
+		// -- Cabeçalho --
+		JLabel identificador = new JLabel("Home");
+		identificador.setName("ID");
+		identificador.setBounds(205, 10, 150, 25);
+		painel.add(identificador);
+		Font fonte = identificador.getFont();
+		fonte.getSize();
+		identificador.setFont(new Font(fonte.getFontName(), fonte.getStyle(), 18));
+		
+		JTextFieldLimitado campoBusca = new JTextFieldLimitado(30);
+		campoBusca.setBounds(1000, 12, 150, 20);
+		painel.add(campoBusca);
+		campoBusca.setName("CAMPO");
+		
+		JButton but = new JButton("Buscar");
+		but.setBounds(1160, 12, 60, 20);
+		painel.add(but);
+		but.setName("BUSCAR");
 		
 		JScrollPane conteudo = new JScrollPane();
 		conteudo.setViewportBorder(null);
-		conteudo.setBounds(200, 0, 300, 300);
+		conteudo.setBounds(200, 45, 200, 200);
 		conteudo.setName("CONTEUDO");
 		painel.add(conteudo);
 		
-		JPrincipal principal = new JPrincipal(usuarioAtual);
+		principal = new JPrincipal(usuarioAtual);
+		principal.setName("PRINCIPAL");
+//		JLabel l = new JLabel("llllllllll");
+//		conteudo.setViewportView(l);
 		conteudo.setViewportView(principal);
 		
+	}
+	
+	public void atualizar() {
+		tree.atualizar();
+		principal.atualizar();
 	}
 }

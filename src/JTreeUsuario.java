@@ -23,4 +23,9 @@ public class JTreeUsuario extends JTree{
 		
 	}
 	
+	public void atualizar() {
+		super.removeAll();
+		criacao();
+	}
+	
 }

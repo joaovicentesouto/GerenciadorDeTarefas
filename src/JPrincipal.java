@@ -6,32 +6,17 @@ import java.util.*;
 public class JPrincipal extends JPanel{
 
 	private Usuario usuario;
+	private InterfaceProjeto projetoAtual;
 	private String estado; // Panel que esta sendo mostrado
-	//RAIZ = home do usuario / "PROJETO" = qualquer sub projeto
+	//USUARIO = home do usuario / "PROJETO" = qualquer sub projeto
 
 	public JPrincipal(Usuario usuario) {
 		super();
 		this.usuario = usuario;
 		setName("PRINCIPAL");
-		setLayout(new CardLayout());
-		estado = "RAIZ";
+		estado = "USUARIO";
 		principalUsuario();
-	}
-
-	public void maquinaDeEstados() {
-		CardLayout cl = (CardLayout) getLayout();
-
-		switch (estado) {
-		case "RAIZ":
-			cl.show(this, "RAIZ");
-			break;
-
-		case "PROJETO":
-			cl.show(this, "PROJETO");
-			break;
-
-			default : break;
-		}
+		super.setMinimumSize(new Dimension(400,400));
 	}
 
 	public void proximoEstado(String proximoEstado) {
@@ -41,31 +26,55 @@ public class JPrincipal extends JPanel{
 	public String estadoAtual() {
 		return estado;
 	}
+	
+	public void atualizar() {
+		
+		super.removeAll();
+		
+		if(estado.equals("USUARIO")) {
+			principalUsuario();
+		} else {
+			principalProjeto();
+		}
+	}
 
 	private void principalUsuario() {
 
 		ArrayList<Component> componentes = new ArrayList<Component>();
 		usuario.aceitarVisita(new VProjetosDoUsuario(componentes, usuario));
-
-		JScrollPane sp = new JScrollPane();
-		sp.setViewportBorder(null);
-		JPanel principal = new JPanel(null);
-		JPanel auxiliar = new JPanel(new GridLayout(componentes.size(), 1));
-		auxiliar.setBounds(0, 0, 1000, componentes.size()*100);
+		
+		// -- Funcionou mais ou menos
+		super.setLayout(new GridLayout(componentes.size(), 1));
 		
 		Iterator<Component> it = componentes.iterator();
 		while(it.hasNext()) {
-			auxiliar.add(it.next());
+			super.add(it.next());
 		}
-		principal.add(auxiliar);
-		sp.setViewportView(principal);
-		add(sp, "RAIZ");
+		// --- teste 1
+
+//		JPanel auxPrimeiro = new JPanel(null);
+//		JPanel auxSegundo = new JPanel(new GridLayout(componentes.size(), 1));
+//		
+//		Rectangle r = new Rectangle(0, 0, 1000, componentes.size()*100);
+//		auxPrimeiro.setBounds(r);
+//		auxSegundo.setBounds(r);
+//		
+//		Iterator<Component> it = componentes.iterator();
+//		while(it.hasNext()) {
+//			auxSegundo.add(it.next());
+//		}
+//		auxPrimeiro.add(auxSegundo);
+//		auxPrimeiro.setName("auxPrimeiro");
+//		auxSegundo.setName("auxSegundo");
+//		add(auxPrimeiro);
+//		auxPrimeiro.setBackground(Color.red);
+//		auxSegundo.setBackground(Color.cyan);
 	}
 
-	private void principalProjeto(InterfaceProjeto projeto) {
+	private void principalProjeto() {
 
 		ArrayList<Component> componentes = new ArrayList<Component>();
-		projeto.aceitarVisita(new VProjetosDoUsuario(componentes, usuario));
+		projetoAtual.aceitarVisita(new VProjetosDoUsuario(componentes, usuario));
 
 		JScrollPane sp = new JScrollPane();
 		sp.setViewportBorder(null);
