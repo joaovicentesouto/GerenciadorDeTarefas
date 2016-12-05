@@ -1,4 +1,6 @@
 import javax.swing.*;
+
+import java.awt.Font;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -19,8 +21,16 @@ public class VTitulo extends Visitor {
 		dados.aceitarVisita(this);
 	}
 	
+	public void visitar(double porcento, Dados dados, int total, int contado) {
+		dados.aceitarVisita(this);
+	}
+	
+
 	public void visitar(String titulo, String descricao, int prioridade, Date[] datas) {
-		this.titulo.setText(titulo);
+		this.titulo.setText(" "+titulo);
+		Font fonte = this.titulo.getFont();
+		fonte.getSize();
+		this.titulo.setFont(new Font(fonte.getFontName(), fonte.getStyle(), 15));
 	}
 
 }

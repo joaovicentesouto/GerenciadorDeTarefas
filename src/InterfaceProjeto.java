@@ -5,5 +5,6 @@ public interface InterfaceProjeto {
 	public void completar();
 	public void aceitarVisita(Visitor v);
 	public String tipo();
+	public void modifica(Dados d);
 
 }

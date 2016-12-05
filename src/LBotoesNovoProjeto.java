@@ -7,10 +7,12 @@ import javax.swing.*;
 
 public class LBotoesNovoProjeto implements ActionListener{
 
+	private JHome home;
 	private JNovoProjeto janela;
 	private InterfaceAdd topo;
 
-	public LBotoesNovoProjeto(JNovoProjeto janela, InterfaceAdd topo){
+	public LBotoesNovoProjeto(JHome home, JNovoProjeto janela, InterfaceAdd topo){
+		this.home = home;
 		this.janela = janela;
 		this.topo = topo;
 	}
@@ -30,12 +32,13 @@ public class LBotoesNovoProjeto implements ActionListener{
 			p = new Projeto(titulo, descricao, prioridade, d);
 		} else {
 			if(tipo.equals("Contador")) {
-				p = new Contador(titulo, descricao, prioridade, 1, d);
+				p = new Contador(titulo, descricao, prioridade, total, d);
 			} else {
 				p = new Tarefa(titulo, descricao, prioridade, d);
 			}
 		}
 		topo.add(p);
+		home.atualizar();
 		janela.dispose();
 	}
 

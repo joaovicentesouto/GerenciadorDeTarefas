@@ -48,6 +48,10 @@ public class Projeto implements InterfaceProjeto, InterfaceAdd, InterfaceRemove 
 		}
 	}
 	
+	public void modifica(Dados d) {
+		dados = d;
+	}
+	
 	public String tipo() {
 		return "PROJETO";
 	}

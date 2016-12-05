@@ -7,11 +7,12 @@ public class VProjetosDoUsuario extends Visitor{
 
 	private ArrayList<Component> componentes;
 	private InterfaceRemove topo;
+	private LAtualizarHome atualizarHome;
 	
-	public VProjetosDoUsuario(ArrayList<Component> componentes, InterfaceRemove topo) {
-		super();
+	public VProjetosDoUsuario(ArrayList<Component> componentes, InterfaceRemove topo, LAtualizarHome atualizarHome) {
 		this.componentes = componentes;
 		this.topo = topo;
+		this.atualizarHome = atualizarHome;
 	}
 	
 	public void visitar(String usuario, String senha, List<InterfaceProjeto> projetos) {
@@ -25,19 +26,19 @@ public class VProjetosDoUsuario extends Visitor{
 				switch (p.tipo()) {
 				
 				case "PROJETO" :
-					c = new JProjeto((Projeto)p, topo);
+					c = new JProjeto((Projeto)p, topo, atualizarHome);
 					//c.setName("PROJETO");
 					componentes.add(c);
 					break;
 				
 				case "TAREFA" :
-					c = new JTarefa((Tarefa)p, topo);
+					c = new JTarefa((Tarefa)p, topo, atualizarHome);
 					//c.setName("TAREFA");
 					componentes.add(c);
 					break;
 				
 				case "CONTADOR" :
-					c = new JContador((Contador)p, topo);
+					c = new JContador((Contador)p, topo, atualizarHome);
 					//c.setName("CONTADOR");
 					componentes.add(c);
 					break;

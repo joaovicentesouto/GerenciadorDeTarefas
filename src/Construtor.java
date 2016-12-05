@@ -8,13 +8,15 @@ public class Construtor {
 	private JPanel tela;
 	private Configuracao config;
 	private ActionListener listener;
+	private GestorTamanhoTela gestorTela;
 
 	public Construtor(JFrame f, JPanel tela, Configuracao config) {
 		this.f = f;
 		this.tela = tela;
 		this.config = config;
 		this.listener = new LComportamento(config, tela, new BancoDeDados());
-		f.addComponentListener(new GestorTamanhoTela(this, config, f, tela));
+		gestorTela = new GestorTamanhoTela(this, config, f, tela);
+		f.addComponentListener(gestorTela);
 	}
 	
 	public void inicio() {
@@ -27,6 +29,8 @@ public class Construtor {
 		us.add(new Projeto("Projeto 3", "Descr 3", 2, null));
 		us.add(new Projeto("Projeto 4", "Desc 2", 0, null));
 		us.add(new Projeto("Projeto 5", "Descr 3", 1, null));
+		
+		// -- fim teste
 		tela.setLayout(new CardLayout());
 		telaLogin();
 		telaCadastro();
@@ -79,7 +83,7 @@ public class Construtor {
 		
 		JPanel principal, home;
 		principal = new JPanel(new BorderLayout());
-		home = new JHome(listener, usuario);
+		home = new JHome(usuario, gestorTela);
 		
 		principal.add(home, BorderLayout.CENTER);
 		principal.repaint();

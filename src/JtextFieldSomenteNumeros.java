@@ -2,11 +2,11 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.*;
 
-public class JtextFieldSomenteNumeros extends JTextField {
+public class JTextFieldSomenteNumeros extends JTextField {
 
 	private int maximoCaracteres=-1; 
 
-	public JtextFieldSomenteNumeros() {
+	public JTextFieldSomenteNumeros() {
 		super();
 		addKeyListener(new java.awt.event.KeyAdapter() {
 			@Override
@@ -16,7 +16,7 @@ public class JtextFieldSomenteNumeros extends JTextField {
 		});
 	}
 
-	public JtextFieldSomenteNumeros(int maximo) {    
+	public JTextFieldSomenteNumeros(int maximo) {    
 		super();
 		setMaximoCaracteres(maximo);
 

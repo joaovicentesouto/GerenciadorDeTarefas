@@ -6,6 +6,10 @@ public class Visitor{
 
 	// Esses que só recebem e visitam funcionam para acessar dados mais profundos, efeito cascata.
 	// Pode criar outros aqui para visitar novas classes
+	public void visitar(InterfaceProjeto projeto) {
+		projeto.aceitarVisita(this);
+	}
+	
 	public void visitar(Projeto projeto) {
 		projeto.aceitarVisita(this);
 	}
@@ -53,6 +57,11 @@ public class Visitor{
 	//Banco de dados
 	public void visitar(List<Usuario> usuarios, Usuario usuarioAtual) {
 		//sobrescrever
+	}
+	
+	//Contador
+	public void visitar(double porcento, Dados dados, int total, int contado) {
+		//Sobrescrever
 	}
 	
 }

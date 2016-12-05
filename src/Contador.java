@@ -16,10 +16,16 @@ public class Contador implements InterfaceProjeto {
 	}
 
 	public void contar(int contado) {
-		this.contado = contado;
+		if(contado<=total) {
+			this.contado = contado;
+		} else {
+			this.contado = total;
+		}
 	}
 
 	public double avaliarPorcentagem() {
+		double contado = (double) this.contado;
+		double total = (double) this.total;
 		return (contado/total)*100;
 	}
 
@@ -27,12 +33,16 @@ public class Contador implements InterfaceProjeto {
 		contado = total;
 	}
 	
+	public void modifica(Dados d) {
+		dados = d;
+	}
+	
 	public String tipo() {
 		return "CONTADOR";
 	}
 
 	public void aceitarVisita(Visitor v) {
-		v.visitar(avaliarPorcentagem(), dados);
+		v.visitar(avaliarPorcentagem(), dados, total, contado);
 	}
 
 }

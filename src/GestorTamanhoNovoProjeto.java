@@ -36,12 +36,6 @@ public class GestorTamanhoNovoProjeto implements ComponentListener {
 		Component[] c = pane.getComponents();
 		
 		for(Component comp : c) {
-			if(comp.getName().equals("botoes")) {
-				Point po = comp.getLocation();
-				po.x = (janela.getWidth()/2)-242;
-				po.y = (janela.getHeight()/2)-120;
-				comp.setLocation(po);
-			}
 			if(comp.getName().equals("principal")) {
 				Point po = comp.getLocation();
 				po.x = (janela.getWidth()/2)-242;

@@ -22,6 +22,10 @@ public class Tarefa implements InterfaceProjeto {
 		status = true;
 	}
 	
+	public void modifica(Dados d) {
+		dados = d;
+	}
+	
 	public String tipo() {
 		return "TAREFA";
 	}

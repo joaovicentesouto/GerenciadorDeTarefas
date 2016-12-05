@@ -19,4 +19,8 @@ public class VPorcentagem extends Visitor {
 		bar.setValue((int)porcento);
 	}
 	
+	public void visitar(double porcento, Dados dados, int total, int contado) {
+		bar.setValue((int)porcento);
+	}
+	
 }

@@ -130,7 +130,7 @@ public class GestorTamanhoTela implements ComponentListener {
 		JPanel aux;
 		JScrollPane menu = null, conteudo = null;
 		JTextField campoBusca = null;
-		JButton buscar = null;
+		JButton buscar = null, novo = null;
 
 		aux = (JPanel) layout.getLayoutComponent(BorderLayout.CENTER);
 		aux = (JPanel) aux.getComponent(0);
@@ -145,6 +145,8 @@ public class GestorTamanhoTela implements ComponentListener {
 					campoBusca = (JTextField) comp;
 				if(comp.getName().equals("BUSCAR"))
 					buscar = (JButton) comp;
+				if(comp.getName().equals("NOVO"))
+					novo = (JButton) comp;
 			}
 		}
 
@@ -153,17 +155,38 @@ public class GestorTamanhoTela implements ComponentListener {
 		menu.setBounds(rec);
 
 		rec = conteudo.getBounds();
-		rec.height = f.getHeight()-60;
+		rec.height = f.getHeight()-105;
 		rec.width = f.getWidth()-200;
-		rec.y = f.getHeight()-(f.getHeight()-45);
+//		rec.y = f.getHeight()-(f.getHeight()-45);
 		conteudo.setBounds(rec);
-
+		
+//		JViewport v = (JViewport) conteudo.getViewport();
+//		v.setViewSize(new Dimension((int)f.getMaximumSize().getWidth(),(int)f.getMaximumSize().getHeight()));
+		
 		JPanel principal = (JPanel)conteudo.getViewport().getView();
-		Rectangle r = principal.getBounds();
+		
+		JPanel auxiliar = (JPanel)principal.getComponents()[0];
+		Rectangle r = auxiliar.getBounds();
 		r.width = rec.width;
-		r.height = (int) f.getMaximizedBounds().getHeight()-60;
-		principal.setMinimumSize(new Dimension(r.width, r.height));
-		principal.setBounds(r);
+		auxiliar.setBounds(r);
+		
+		if(auxiliar.getComponents()[0].getName().equals("aux2")) {
+			JPanel auxiliar2 = (JPanel)auxiliar.getComponents()[0];
+			r = auxiliar2.getBounds();
+			r.width = rec.width-5;
+			auxiliar2.setBounds(r);
+		}
+		
+		Rectangle rPrincipal = principal.getBounds();
+		if(r.height >= rPrincipal.height) {
+			rPrincipal.width = r.width;
+			//rPrincipal.height = r.height;
+			principal.setBounds(rPrincipal);
+		} else {
+			rPrincipal.width = rec.width;
+			//rPrincipal.height = rec.height;
+			principal.setBounds(rPrincipal);
+		}
 
 //		JPanel auxPrimeiro = (JPanel)principal.getComponents()[0];
 //		r = auxPrimeiro.getBounds();
@@ -181,7 +204,11 @@ public class GestorTamanhoTela implements ComponentListener {
 		rec = buscar.getBounds();
 		rec.x = f.getWidth()-80;
 		buscar.setBounds(rec);
-		//			
+		
+		rec = novo.getBounds();
+		rec.x = f.getWidth()-300;
+		novo.setBounds(rec);
+		
 		//			conteudo.setMinimumSize(new Dimension(200,200));
 		//			principal.setMinimumSize(new Dimension(200,200));
 		//			auxPrimeiro.setMinimumSize(new Dimension(200,200));

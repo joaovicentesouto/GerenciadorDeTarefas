@@ -6,12 +6,13 @@ public class JTarefa extends JPanel{
 	private Tarefa tarefa;
 	private JLabel titulo, descricao;
 	private JProgressBar bar;
-	private JButton excluir, completar;
+	private JButton excluir, completar, modificar;
+	private LAtualizarHome atualizarHome;
 	
-	public JTarefa(Tarefa tarefa, InterfaceRemove topo) {
-		super();
+	public JTarefa(Tarefa tarefa, InterfaceRemove topo, LAtualizarHome atualizarHome) {
 		this.tarefa = tarefa;
 		super.setName("TAREFA");
+		this.atualizarHome = atualizarHome;
 		criacao(topo);
 	}
 
@@ -33,10 +34,13 @@ public class JTarefa extends JPanel{
 		tarefa.aceitarVisita(new VPorcentagem(bar));
 		
 		excluir = new JButton("Excluir");
-		excluir.addActionListener(new LExcluidor(topo, tarefa));
+		excluir.addActionListener(new LExcluidor(topo, tarefa, atualizarHome));
 		
 		completar = new JButton("Completar");
-		completar.addActionListener(new LCompletador(tarefa));
+		completar.addActionListener(new LCompletador(tarefa, atualizarHome));
+		
+		modificar = new JButton("Modificar");
+		modificar.addActionListener(new LModificador(tarefa, atualizarHome));
 		
 		JPanel aux = new JPanel(new BorderLayout());
 		aux.add(titulo, BorderLayout.WEST);
@@ -50,6 +54,7 @@ public class JTarefa extends JPanel{
 		JPanel aux2 = new JPanel(new FlowLayout());
 		aux2.add(excluir);
 		aux2.add(completar);
+		aux2.add(modificar);
 		aux.add(aux2, BorderLayout.EAST);
 		super.add(aux);
 		

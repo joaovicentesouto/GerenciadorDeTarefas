@@ -37,5 +37,9 @@ public class VCorJPanel extends Visitor {
 		default: break;
 		}
 	}
+	
+	public void visitar(double porcento, Dados dados, int total, int contado) {
+		dados.aceitarVisita(this);
+	}
 
 }

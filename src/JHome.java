@@ -16,16 +16,20 @@ public class JHome extends JPanel {
 	private Usuario usuarioAtual;
 	private JPrincipal principal;
 	private JTreeUsuario tree;
+	private JLabel identificador;
+	private JButton novo;
 	private ActionListener listener;
+	private GestorTamanhoTela gestorTela;
 	
-	public JHome(ActionListener listener, Usuario usuarioAtual) {
+	public JHome(Usuario usuarioAtual, GestorTamanhoTela gestorTela) {
 		this.usuarioAtual = usuarioAtual;
 		criacao();
+		this.gestorTela = gestorTela;
 	}
 	
 	public void criacao() {
 
-		//listener = new L
+		LAtualizarHome atualizarHome = new LAtualizarHome(this);
 		
 		setForeground(Color.BLACK);
 		setLayout(new BorderLayout());
@@ -67,11 +71,13 @@ public class JHome extends JPanel {
 		menu.setName("MENU_LATERAL");
 		painel.add(menu);
 		
-		tree = new JTreeUsuario(usuarioAtual);
+		tree = new JTreeUsuario(usuarioAtual, atualizarHome);
+		menu.add(tree);
 		menu.setViewportView(tree);
 		
+		
 		// -- Cabeçalho --
-		JLabel identificador = new JLabel("Home");
+		identificador = new JLabel("Home");
 		identificador.setName("ID");
 		identificador.setBounds(205, 10, 150, 25);
 		painel.add(identificador);
@@ -89,16 +95,21 @@ public class JHome extends JPanel {
 		painel.add(but);
 		but.setName("BUSCAR");
 		
+		novo = new JButton("Novo");
+		novo.setBounds(950, 12, 50, 20);
+		painel.add(novo);
+		novo.setName("NOVO");
+		novo.addActionListener(new LCriador(this, usuarioAtual));
+		
 		JScrollPane conteudo = new JScrollPane();
 		conteudo.setViewportBorder(null);
 		conteudo.setBounds(200, 45, 200, 200);
 		conteudo.setName("CONTEUDO");
 		painel.add(conteudo);
 		
-		principal = new JPrincipal(usuarioAtual);
+		principal = new JPrincipal(usuarioAtual, atualizarHome);
 		principal.setName("PRINCIPAL");
-//		JLabel l = new JLabel("llllllllll");
-//		conteudo.setViewportView(l);
+		conteudo.add(principal);
 		conteudo.setViewportView(principal);
 		
 	}
@@ -106,5 +117,23 @@ public class JHome extends JPanel {
 	public void atualizar() {
 		tree.atualizar();
 		principal.atualizar();
+		gestorTela.ajusteTamanhoHome();
+	}
+	
+	public void atualizar(String cmd) {
+		principal.proximoEstado("USUARIO");
+		identificador.setText("Home");
+		((LCriador)novo.getActionListeners()[0]).novoTopo(usuarioAtual);
+		principal.atualizar();
+		gestorTela.ajusteTamanhoHome();
+	}
+	
+	public void atualizar(InterfaceProjeto p) {
+		principal.proximoEstado("PROJETO");
+		p.aceitarVisita(new VTitulo(identificador));
+		((LCriador)novo.getActionListeners()[0]).novoTopo((Projeto)p);
+		principal.atualizarProjeto(p);
+		principal.atualizar();
+		gestorTela.ajusteTamanhoHome();
 	}
 }

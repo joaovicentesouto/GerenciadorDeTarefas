@@ -6,12 +6,13 @@ public class JProjeto extends JPanel {
 	private Projeto projeto;
 	private JLabel titulo, descricao;
 	private JProgressBar bar;
-	private JButton excluir, completar;
+	private JButton excluir, completar, modificar;
+	private LAtualizarHome atualizarHome;
 	
-	public JProjeto(Projeto projeto, InterfaceRemove topo) {
-		super();
+	public JProjeto(Projeto projeto, InterfaceRemove topo, LAtualizarHome atualizarHome) {
 		this.projeto = projeto;
 		super.setName("PROJETO");
+		this.atualizarHome = atualizarHome;
 		criacao(topo);
 	}
 	
@@ -33,10 +34,13 @@ public class JProjeto extends JPanel {
 		projeto.aceitarVisita(new VPorcentagem(bar));
 		
 		excluir = new JButton("Excluir");
-		excluir.addActionListener(new LExcluidor(topo, projeto));
+		excluir.addActionListener(new LExcluidor(topo, projeto, atualizarHome));
 		
 		completar = new JButton("Completar");
-		completar.addActionListener(new LCompletador(projeto));
+		completar.addActionListener(new LCompletador(projeto, atualizarHome));
+		
+		modificar = new JButton("Modificar");
+		modificar.addActionListener(new LModificador(projeto, atualizarHome));
 		
 		JPanel aux = new JPanel(new BorderLayout());
 		aux.add(titulo, BorderLayout.WEST);
@@ -50,6 +54,7 @@ public class JProjeto extends JPanel {
 		JPanel aux2 = new JPanel(new FlowLayout());
 		aux2.add(excluir);
 		aux2.add(completar);
+		aux2.add(modificar);
 		aux.add(aux2, BorderLayout.EAST);
 		super.add(aux);
 		

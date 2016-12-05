@@ -21,7 +21,7 @@ public class Main {
 		Dimension tamanho = kit.getScreenSize();
 		
 		f.setSize(tamanho.width, tamanho.height);
-		f.setMinimumSize(new Dimension(500, 200));
+		f.setMinimumSize(new Dimension(570, 250));
 		f.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setVisible(true);
@@ -29,6 +29,7 @@ public class Main {
 		
 		//Projeto p = new Projeto("Projeto 1", "Descricao 1", 0, null);
 		//new JNovoProjeto(p, tamanho);
+		//new JModificaProjeto(null, p, tamanho);
 	}
 
 }

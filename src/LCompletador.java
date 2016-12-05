@@ -3,13 +3,16 @@ import javax.swing.*;
 
 public class LCompletador implements ActionListener {
 
-	InterfaceProjeto p; // o projeto/tarefa que será completado.
+	private InterfaceProjeto p; // o projeto/tarefa que será completado.
+	private LAtualizarHome atualizarHome;
 	
-	public LCompletador(InterfaceProjeto p) {
+	public LCompletador(InterfaceProjeto p, LAtualizarHome atualizarHome) {
 		this.p = p;
+		this.atualizarHome = atualizarHome;
 	}
 
 	public void actionPerformed(ActionEvent e) {
 		p.completar();
+		atualizarHome.atualizarHome();
 	}
 }

@@ -70,21 +70,21 @@ public class JLogin extends JPanel {
 		usuario.setName("USUARIO");
 		PainelFixo.add(usuario);
 
-		JLabel label = new JLabel("Usu�rio:");
+		JLabel label = new JLabel("Usuario:");
 		label.setHorizontalAlignment(SwingConstants.LEFT);
 		label.setFont(new Font("Arial", Font.PLAIN, 12));
 		label.setAlignmentX(0.5f);
 		label.setBounds(0, 0, 55, 15);
 		PainelFixo.add(label);
 
-		JLabel label_1 = new JLabel("Senha:");
-		label_1.setHorizontalAlignment(SwingConstants.LEFT);
-		label_1.setFont(new Font("Arial", Font.PLAIN, 12));
-		label_1.setAlignmentX(0.5f);
-		label_1.setBounds(0, 20, 55, 15);
-		PainelFixo.add(label_1);
+		label = new JLabel("Senha:");
+		label.setHorizontalAlignment(SwingConstants.LEFT);
+		label.setFont(new Font("Arial", Font.PLAIN, 12));
+		label.setAlignmentX(0.5f);
+		label.setBounds(0, 20, 55, 15);
+		PainelFixo.add(label);
 
-		JLabel lblUsurioOuSenha = new JLabel("Usu�rio ou senha incorretos. Tente novamente.");
+		JLabel lblUsurioOuSenha = new JLabel("Usuario ou senha incorretos. Tente novamente.");
 		lblUsurioOuSenha.setForeground(Color.RED);
 		lblUsurioOuSenha.setVisible(false);
 		lblUsurioOuSenha.setHorizontalAlignment(SwingConstants.CENTER);

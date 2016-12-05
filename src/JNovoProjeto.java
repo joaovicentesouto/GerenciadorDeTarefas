@@ -13,6 +13,7 @@ import javax.swing.text.MaskFormatter;
 
 public class JNovoProjeto extends JDialog{
 
+	private JHome home;
 	private InterfaceAdd topo;
 	private JTextField titulo, dia, mes, ano, totalCont; // Espaco que vai ser escrito, que contém as informações do projeto.
 	private JTextArea descricao;
@@ -20,8 +21,8 @@ public class JNovoProjeto extends JDialog{
 	private String estado;
 	private JPanel principal;
 
-	public JNovoProjeto(InterfaceAdd topo, Dimension tamanho){
-
+	public JNovoProjeto(JHome home, InterfaceAdd topo, Dimension tamanho){
+		this.home = home;
 		this.topo = topo;
 
 		setLocation((int)(tamanho.getWidth()/2)-250, (int)(tamanho.getHeight()/2)-150);
@@ -32,6 +33,7 @@ public class JNovoProjeto extends JDialog{
 		setTitle("Novo");
 
 		estado = "Projeto";
+		totalCont = new JTextField("0");
 		inicializacao();
 		addComponentListener(new GestorTamanhoNovoProjeto(this));
 
@@ -60,6 +62,7 @@ public class JNovoProjeto extends JDialog{
 		rdbProjeto.setSelected(true);
 		botoes.add(rdbProjeto);
 		rdbProjeto.setName("Projeto");
+		rdbProjeto.setActionCommand("Projeto");
 
 		JRadioButton rdbContador = new JRadioButton("Contador");
 		rdbContador.setBounds(330, 5, 90, 20);
@@ -67,20 +70,21 @@ public class JNovoProjeto extends JDialog{
 		botoes.add(rdbContador);
 		rdbContador.setName("Contador");
 		//rdbContador.setSelected(true);
+		rdbProjeto.setActionCommand("Contador");
 
 		JRadioButton rdbTarefa = new JRadioButton("Tarefa");
-		
 		rdbTarefa.setBounds(205, 5, 80, 20);
 		rdbTarefa.addItemListener(listener);
 		botoes.add(rdbTarefa);
 		rdbTarefa.setName("Tarefa");
+		rdbProjeto.setActionCommand("Tarefa");
 
 		// -- Principal --
 		JPanel painel = painelConstrutor();
 		principal.add(painel);
 
 		// -- Botoes cancelar e adicionar --
-		LBotoesNovoProjeto ba = new LBotoesNovoProjeto(this, topo);
+		LBotoesNovoProjeto ba = new LBotoesNovoProjeto(home, this, topo);
 		JButton but = new JButton("Cancelar");
 		but.setBounds(158, 185, 80, 20);
 		but.setName("Cancelar");
@@ -192,7 +196,7 @@ public class JNovoProjeto extends JDialog{
 		lblDataFinal.setBounds(320, 65, 170, 14);
 		auxiliar.add(lblDataFinal);
 
-		dia = new JtextFieldSomenteNumeros(2);
+		dia = new JTextFieldSomenteNumeros(2);
 		dia.setName("DIA");
 		dia.setBounds(320, 85, 30, 20);
 		auxiliar.add(dia);
@@ -200,7 +204,7 @@ public class JNovoProjeto extends JDialog{
 		JLabel labelAux = new JLabel("/");
 		labelAux.setBounds(350, 85, 40, 20);
 		auxiliar.add(labelAux);
-		mes = new JtextFieldSomenteNumeros(2);
+		mes = new JTextFieldSomenteNumeros(2);
 		mes.setName("MES");
 		mes.setBounds(357, 85, 30, 20);
 		auxiliar.add(mes);
@@ -208,7 +212,7 @@ public class JNovoProjeto extends JDialog{
 		labelAux = new JLabel("/");
 		labelAux.setBounds(387, 85, 30, 20);
 		auxiliar.add(labelAux);
-		ano = new JtextFieldSomenteNumeros(4);
+		ano = new JTextFieldSomenteNumeros(4);
 		ano.setName("ANO");
 		ano.setBounds(394, 85, 50, 20);
 		auxiliar.add(ano);
@@ -227,7 +231,8 @@ public class JNovoProjeto extends JDialog{
 		label.setBounds(5, 5, 190, 20);
 		aux.add(label);
 
-		totalCont = new JtextFieldSomenteNumeros(13);
+		totalCont = new JTextFieldSomenteNumeros(13);
+		totalCont.setText("0");
 		totalCont.setName("CONTADOR");
 		totalCont.setBounds(198, 5, 117, 20);
 		aux.add(totalCont);
@@ -237,8 +242,8 @@ public class JNovoProjeto extends JDialog{
 	}
 
 	public void criacao(LBotoesNovoProjeto act) { // Usado para criar
-		String titulo, descricao, dia, mes, ano, conta;
-		int prioridade = 0, d, m, a, total = 0;
+		String titulo, descricao, dia, mes, ano;
+		int prioridade = 0, d, m, a, total = 1;
 		
 		titulo = this.titulo.getText();
 		descricao = this.descricao.getText();
@@ -249,6 +254,8 @@ public class JNovoProjeto extends JDialog{
 		m = Integer.parseInt(mes);
 		a = Integer.parseInt(ano);
 		prioridade = Integer.parseInt(prioridades.getSelection().getActionCommand());
+		
+		total = Integer.parseInt(totalCont.getText());
 		
 		Calendar c = Calendar.getInstance();
 		c.set(a, m-1, d);

@@ -16,6 +16,8 @@ class LComportamento implements ActionListener{
 	public boolean valida_Usuario(JTextField us, JTextField se, JLabel erro){
 		erro.setVisible(false);
 		if(bd.validar(new Usuario(us.getText(), se.getText()))){
+			Usuario usuarioAprovado = null;
+			bd.aceitarVisita(new VPegaUsuario(usuarioAprovado));
 			config.maquinaDeEstados("HOME");
 			return true;
 		}else

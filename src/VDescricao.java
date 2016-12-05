@@ -21,8 +21,12 @@ public class VDescricao extends Visitor {
 		dados.aceitarVisita(this);
 	}
 	
+	public void visitar(double porcento, Dados dados, int total, int contado) {
+		dados.aceitarVisita(this);
+	}
+	
 	public void visitar(String titulo, String descricao, int prioridade, Date[] datas) {
-		this.descricao.setText(descricao);
+		this.descricao.setText(" "+descricao);
 	}
 
 }

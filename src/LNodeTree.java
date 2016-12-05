@@ -5,16 +5,37 @@ import javax.swing.tree.DefaultMutableTreeNode;
 public class LNodeTree implements TreeSelectionListener {
 
 	private JTreeUsuario tree;
-	
-	public LNodeTree(JTreeUsuario tree) {
+	private LAtualizarHome atualizarHome;
+	private String pressionado = "a";
+
+	public LNodeTree(JTreeUsuario tree, LAtualizarHome atualizarHome) {
 		this.tree = tree;
+		this.atualizarHome = atualizarHome;
 	}
-	@Override
+
 	public void valueChanged(TreeSelectionEvent arg0) {
-		// TODO Auto-generated method stub
-		DefaultMutableTreeNode node = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
-		System.out.println(node.toString());
-		
+		NossoTreeNode node = (NossoTreeNode) tree.getLastSelectedPathComponent();
+		if(node!=null) {
+			String teste = (String)node.getUserObject();
+			if(pressionado.equals(teste)) {
+				System.out.println("Nao foi "+node.getUserObject());
+				System.out.println("Nao foi "+pressionado);
+			} else {
+				pressionado = (String) node.getUserObject();
+				System.out.println("Foi "+node.getUserObject());
+				System.out.println("Foi "+pressionado);
+				if(node.getUserObject().equals("Meus Projetos")) {
+					atualizarHome.atualizarHome("USUARIO");
+				} else {
+					NossoTreeNode nosso = (NossoTreeNode) node;
+					if(nosso.tipoProjeto().equals("PROJETO")) {
+						nosso.aceitarVisita(new VNodeParaModHome(atualizarHome));
+					}
+				}
+				
+			}
+
+		}
 	}
-	
+
 }
