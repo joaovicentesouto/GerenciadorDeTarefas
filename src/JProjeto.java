@@ -14,6 +14,7 @@ public class JProjeto extends JPanel {
 		super.setName("PROJETO");
 		this.atualizarHome = atualizarHome;
 		criacao(topo);
+		super.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 	}
 	
 	public void criacao(InterfaceRemove topo) {

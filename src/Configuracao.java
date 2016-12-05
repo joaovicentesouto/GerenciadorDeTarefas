@@ -26,6 +26,10 @@ public class Configuracao {
 		cl.show(tela, "LOGIN");
 	}
 	
+	public void ativaHomeUsuarioA(Usuario usuario) {
+		construtor.telaHome(usuario);
+	}
+	
 	public void maquinaDeEstados(String estado) {
 		this.estado = estado;
 		CardLayout cl = (CardLayout) tela.getLayout();

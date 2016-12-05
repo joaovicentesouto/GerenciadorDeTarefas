@@ -52,20 +52,20 @@ public class JPrincipal extends JPanel{
 		
 		JPanel aux1 = new JPanel(null);
 		aux1.setName("aux1");
-		aux1.setBounds(0, 0, 300, componentes.size()*70);
+		aux1.setBounds(0, 0, 300, componentes.size()*80);
 		super.add(aux1, BorderLayout.CENTER);
 		
 		JPanel aux2 = new JPanel(new GridLayout(componentes.size(), 1));
 		aux2.setName("aux2");
 		aux1.add(aux2);
-		aux2.setBounds(0, 0, 300, componentes.size()*70);
+		aux2.setBounds(0, 0, 300, componentes.size()*80);
 		
 		Iterator<Component> it = componentes.iterator();
 		while(it.hasNext()) {
 			aux2.add(it.next());
 		}
 		
-		super.setSize(new Dimension(300, componentes.size()*70));
+		super.setSize(new Dimension(300, componentes.size()*80));
 		
 		
 		// -- Funcionou mais ou menos
@@ -89,30 +89,30 @@ public class JPrincipal extends JPanel{
 		if(componentes.isEmpty()) {
 			JPanel aux1 = new JPanel(null);
 			aux1.setName("aux1");
-			aux1.setBounds(0, 0, 300, 70);
+			aux1.setBounds(0, 0, 300, 80);
 			super.add(aux1, BorderLayout.CENTER);
 			
 			JLabel aux2 = new JLabel("Está meio vazio por aqui...");
 			aux2.setName("vazio");
-			aux2.setBounds(25, 5, 300, 70);
+			aux2.setBounds(25, 5, 300, 80);
 			aux1.add(aux2);
 		} else {
 			JPanel aux1 = new JPanel(null);
 			aux1.setName("aux1");
-			aux1.setBounds(0, 0, 300, componentes.size()*70);
+			aux1.setBounds(0, 0, 300, componentes.size()*80);
 			super.add(aux1, BorderLayout.CENTER);
 			
 			JPanel aux2 = new JPanel(new GridLayout(componentes.size(), 1));
 			aux2.setName("aux2");
 			aux1.add(aux2);
-			aux2.setBounds(0, 0, 300, componentes.size()*70);
+			aux2.setBounds(0, 0, 300, componentes.size()*80);
 			
 			Iterator<Component> it = componentes.iterator();
 			while(it.hasNext()) {
 				aux2.add(it.next());
 			}
 			
-			super.setSize(new Dimension(300, componentes.size()*70));
+			super.setSize(new Dimension(300, componentes.size()*80));
 		}
 	}
 

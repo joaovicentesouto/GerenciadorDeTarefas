@@ -21,10 +21,11 @@ public class JHome extends JPanel {
 	private ActionListener listener;
 	private GestorTamanhoTela gestorTela;
 	
-	public JHome(Usuario usuarioAtual, GestorTamanhoTela gestorTela) {
+	public JHome(Usuario usuarioAtual, GestorTamanhoTela gestorTela, ActionListener listener) {
 		this.usuarioAtual = usuarioAtual;
-		criacao();
 		this.gestorTela = gestorTela;
+		this.listener = listener;
+		criacao();
 	}
 	
 	public void criacao() {

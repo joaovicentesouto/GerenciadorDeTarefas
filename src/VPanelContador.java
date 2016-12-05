@@ -1,16 +1,16 @@
 import javax.swing.JLabel;
 
-public class VTotalContador extends Visitor{
+public class VPanelContador extends Visitor{
 
 	private JLabel total;
 	private JTextFieldSomenteNumeros numero;
 	
-	public VTotalContador(JLabel total) {
+	public VPanelContador(JLabel total) {
 		this.total = total;
 		numero = null;
 	}
 	
-	public VTotalContador(JTextFieldSomenteNumeros numero) {
+	public VPanelContador(JTextFieldSomenteNumeros numero) {
 		this.numero = numero;
 		total = null;
 	}

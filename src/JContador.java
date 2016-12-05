@@ -15,6 +15,7 @@ public class JContador extends JPanel{
 		super.setName("CONTADOR");
 		this.atualizarHome = atualizarHome;
 		criacao(topo);
+		super.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 	}
 	
 	public void criacao(InterfaceRemove topo) {
@@ -45,12 +46,12 @@ public class JContador extends JPanel{
 		
 		contar = new JTextFieldSomenteNumeros(13);
 		contar.setSize(new Dimension(50, 20));
-		contador.aceitarVisita(new VTotalContador(contar));
+		contador.aceitarVisita(new VPanelContador(contar));
 		BContar = new JButton("Contar");
 		BContar.addActionListener(new LBotaoContador(contador, contar, atualizarHome));
 		
 		total = new JLabel();
-		contador.aceitarVisita(new VTotalContador(total));
+		contador.aceitarVisita(new VPanelContador(total));
 		
 		JPanel aux = new JPanel(new BorderLayout());
 		aux.add(titulo, BorderLayout.WEST);

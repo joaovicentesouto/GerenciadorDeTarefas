@@ -33,6 +33,12 @@ public class VNodesProjeto extends Visitor {
 		node.add(nodeAux);
 	}
 	
+	public void visitar(double porcento, Dados dados, int total, int contado) {
+		NossoTreeNode nodeAux = new NossoTreeNode(projeto);
+		dados.aceitarVisita(new VNodesProjeto(nodeAux, null));
+		node.add(nodeAux);
+	}
+	
 	public void visitar(String titulo, String descricao, int prioridade, Date[] datas) {
 		node.setUserObject(titulo);
 	}

@@ -18,12 +18,8 @@ public class LNodeTree implements TreeSelectionListener {
 		if(node!=null) {
 			String teste = (String)node.getUserObject();
 			if(pressionado.equals(teste)) {
-				System.out.println("Nao foi "+node.getUserObject());
-				System.out.println("Nao foi "+pressionado);
 			} else {
 				pressionado = (String) node.getUserObject();
-				System.out.println("Foi "+node.getUserObject());
-				System.out.println("Foi "+pressionado);
 				if(node.getUserObject().equals("Meus Projetos")) {
 					atualizarHome.atualizarHome("USUARIO");
 				} else {

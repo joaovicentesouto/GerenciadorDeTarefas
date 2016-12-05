@@ -14,6 +14,7 @@ public class JTarefa extends JPanel{
 		super.setName("TAREFA");
 		this.atualizarHome = atualizarHome;
 		criacao(topo);
+		super.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 	}
 
 	public void criacao(InterfaceRemove topo) {
