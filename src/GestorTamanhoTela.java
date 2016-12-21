@@ -188,14 +188,6 @@ public class GestorTamanhoTela implements ComponentListener {
 			principal.setBounds(rPrincipal);
 		}
 
-//		JPanel auxPrimeiro = (JPanel)principal.getComponents()[0];
-//		r = auxPrimeiro.getBounds();
-//		r.width = rec.width;
-//		auxPrimeiro.setBounds(r);
-//
-//		r = auxPrimeiro.getComponents()[0].getBounds();
-//		r.width = rec.width;
-//		auxPrimeiro.getComponents()[0].setBounds(r);
 
 		rec = campoBusca.getBounds();
 		rec.x = f.getWidth()-240;

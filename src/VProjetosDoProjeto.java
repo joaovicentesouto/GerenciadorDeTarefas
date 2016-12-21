@@ -28,19 +28,16 @@ public class VProjetosDoProjeto extends Visitor {
 				
 				case "PROJETO" :
 					c = new JProjeto((Projeto)p, topo, atualizarHome);
-					//c.setName("PROJETO");
 					componentes.add(c);
 					break;
 				
 				case "TAREFA" :
 					c = new JTarefa((Tarefa)p, topo, atualizarHome);
-					//c.setName("TAREFA");
 					componentes.add(c);
 					break;
 				
 				case "CONTADOR" :
 					c = new JContador((Contador)p, topo, atualizarHome);
-					//c.setName("CONTADOR");
 					componentes.add(c);
 					break;
 				
